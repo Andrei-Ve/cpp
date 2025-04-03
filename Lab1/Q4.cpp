@@ -1,5 +1,5 @@
 #include <iostream>
-#define SQUARE(x) x*x
+#define SQUARE(x) x*x  //MACRO 
 
 int main() {
     short int x;
