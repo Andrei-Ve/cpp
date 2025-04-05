@@ -11,9 +11,10 @@ bool ask = true;   //should we keep asking user for password?
 
 bool upperFound = false, lowerFound = false, digitFound = false, specialFound = false; //boolians for recognizing conditions
 
-void CheckCriteria(std::string passwrd) {
-    
-    for(int i = 0; i <= passwrd.length(); i++) {   //main for loop goes throught each element in password
+void CheckCriteria(std::string passwrd) {           //#################################################################################################
+                                                    //#  after finishing this, I got to know that there are functions like isupper, islower, isdigit  #
+                                                    //#################################################################################################
+    for(int i = 0; i < passwrd.length(); i++) {   //main for loop goes throught each element in password
         for(int u = 0; u < upper_.length(); u++){   //compares if element of password is in uppercase list
             if (passwrd[i] == upper_[u]){
                 //std::cout << upper_[u];
@@ -68,3 +69,4 @@ int main() {
 
     return 0;
 }
+
