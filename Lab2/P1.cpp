@@ -9,10 +9,11 @@ double product(double a, double b) {
 }
 
 double product(int a, double b, bool c) {
-  if(c){return a*b;}
-  else if (!c) {return int(a*b);}
+  if(!c){return a*b;}
+  else if (c) {return int(a*b);}
   else{
-    std::cout << "\nSomething went wrong\n";
+    std::cout << "!!! Something went wrong !!!";
+    return 0;
   }
 }
 
@@ -32,7 +33,7 @@ int main() {
   bool flr;
   std::cout << "Input first intiger: "; std::cin >> FirstInt; 
   std::cout << "Input second float: "; std::cin >> FirstDBL;
-  std::cout << "Input '0' to multiply int and float, '1' to do same but floored: "; std::cin >> flr;
+  std::cout << "Input '0' to get exact value, '1' to get rounded value: "; std::cin >> flr;
   std::cout << "= " << product(FirstInt, FirstDBL, flr) << "\n\n";
 
   return 0;
