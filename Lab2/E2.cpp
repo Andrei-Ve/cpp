@@ -4,27 +4,31 @@ void swapUsingNothing(float a, float b) {
   float c = a;
   a = b;
   b = c;
-  std::cout << "a = " << a << " b = " << b << std::endl;
 }
 
 void swapUsingPointers(float *a, float *b) {
   float c = *a;
   *a = *b;
   *b = c;
-  std::cout << "a = " << *a << " b = " << *b << std::endl;
 }
 
-// void swapUsingReferences(int &a, int &b) {
-
-
-// }
+void swapUsingReferences(float &aRef, float &bRef) {
+  float a = aRef;
+  float b = bRef;
+  a = bRef;
+  b = aRef;
+}
 
 int main() {
   float a, b;
-  std::cout << "enter a: "; std::cin >> a; 
-  std::cout << "enter b: "; std::cin >> b;
+  std::cout << "a = "; std::cin >> a; 
+  std::cout << "b = "; std::cin >> b;
   swapUsingNothing(a, b);
+  std::cout << "a = " << a << " b = " << b << std::endl;
   swapUsingPointers(&a, &b);
+  std::cout << "a = " << a << " b = " << b << std::endl;
+  swapUsingReferences(a, b);
+  std::cout << "a = " << a << " b = " << b << std::endl;
 
   return 0;
 }
