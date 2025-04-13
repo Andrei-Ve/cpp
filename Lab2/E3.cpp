@@ -1,17 +1,8 @@
 #include <iostream>
 
-// int calculator(int a, int b, char c) {
-//   switch (c) {
-//     case '+':return a+b;break;
-//     case '-':return a-b;break;
-//     case '*':return a*b;break;
-//     case '/':return a/b;break;
-//     default: std::cout << "  Errorrr ! ! !  "; return 0;
-    
-//   }
-// }
-float calculator(float a, float b, char c) {
-  switch (c) {
+
+float calculator(float a, float b, char c) {  //setting up fuction to perform specified task
+  switch (c) {   //switching based on user input and returning specified operation
     case '+':return a+b;break;
     case '-':return a-b;break;
     case '*':return a*b;break;
@@ -25,9 +16,10 @@ float calculator(float a, float b, char c) {
 int main() {
   float a, b;
   char c;
-  std::cout << "user input1: ";std::cin >> a;
-  std::cout << "user input2: ";std::cin >> b;
-  std::cout << "user input3: ";std::cin >> c;
-  std::cout << a << " " << b << " " << c << " = " << calculator(a, b, c);
+  // asking each input
+  std::cout << "first num: ";std::cin >> a;
+  std::cout << "second num: ";std::cin >> b;
+  std::cout << "operation: ";std::cin >> c;
+  std::cout << a << " "<< c << " " << b  << " = " << calculator(a, b, c);
   return 0;
 }
