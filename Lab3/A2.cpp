@@ -25,14 +25,22 @@ class Student {
         int getAge() {return age;}
 
         char getGrade() {return grade;} 
-
-        // void displayInfo() {
-
-        // }
+        
+        void displayInfo() {
+            std::cout << "Name: " << getName() << std::endl;
+            std::cout << "Age: " << getAge() << std::endl;
+            std::cout << "Grade: " << getGrade() << std::endl;
+        }
 };
 
 
+
 int main() {
+    Student student1;
+    student1.setName("Ruger");
+    student1.setAge(25);
+    student1.setGrade('E');
+    student1.displayInfo();
 
 
     return 0;
