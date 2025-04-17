@@ -16,19 +16,13 @@ class Complex{
             return Complex(real+other.real, imag+other.imag);
         }
         Complex operator/(const Complex& other){
-            double len1, ang1, len2, ang2, len3, ang3;
-            len1 = sqrt(real*real+imag*imag);
-            ang1 = atan(imag/real);
+            double x = real, y = imag;
+            double a = other.real, b = other.imag;
+                
+            double tempReal = ((a*x+b*y)/(a*a+b*b));
+            double tempImag = ((a*y-b*x)/(a*a+b*b));
 
-            len2 = sqrt(other.real*other.real+other.imag*other.imag);
-            ang2 = atan(other.imag/other.real);
-
-            len3 = len1/len2;
-            ang3 = ang1/ang2;
-
-            
-
-            return Complex(real/other.real, imag/other.imag);
+            return Complex(tempReal, tempImag);
         }
 
 
@@ -41,25 +35,21 @@ class Complex{
 };
 
 std::ostream& operator<<(std::ostream& os, const Complex& c){
-    os << "Complex number is " << c.real << " + " << c.imag << "i" << std::endl;
+    os << c.real << " + " << c.imag << "i" << std::endl;
     return os;
 }
 
 
 int main(){
-    Complex c1(2.5, 3.8), c2(4.2, 0.1);
+    Complex c1(4, 5), c2(2, -3);
 
     std::cout << "c1 is " << c1;
     std::cout << "c2 is " << c2;
 
-    Complex c3 = c1-c2;
-    std::cout << "c3 (c1-c2) is " << c3;
+    std::cout << "c1-c2 is " << c1-c2;
 
-    Complex c4 = c1+c2;
-    std::cout << "c4 (c1+c2) is " << c4;
+    std::cout << "c1+c2 is " << c1+c2;
 
-    Complex c5 = c1/c2;
-    std::cout << "c4 (c1/c2) is " << c5;
-    
+    std::cout << "c1/c2 is " << c1/c2;
     return 0;
 }
