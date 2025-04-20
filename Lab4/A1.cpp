@@ -19,10 +19,10 @@ class Complex{
             double x = real, y = imag;
             double a = other.real, b = other.imag;
                 
-            double tempReal = ((a*x+b*y)/(a*a+b*b));
-            double tempImag = ((a*y-b*x)/(a*a+b*b));
+            // double tempReal = ((a*x+b*y)/(a*a+b*b));
+            // double tempImag = ((a*y-b*x)/(a*a+b*b));
 
-            return Complex(tempReal, tempImag);
+            return Complex((a*x+b*y)/(a*a+b*b), (a*y-b*x)/(a*a+b*b));
         }
 
 
