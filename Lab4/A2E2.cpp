@@ -6,10 +6,11 @@ class Book{
         std::string title;
         int pages;
     public:
+    //constructor
         Book(std::string t = "Untitled", int p = 0) : title(t), pages(p){
             std::cout << "Constructor: \"" << title << "\" with " << pages << " pages.\n";
         }
-
+        //destructor
         ~Book(){
             std::cout << "Destructor: \"" << title << "\" destroyed.\n";
         }
@@ -24,6 +25,7 @@ class BookShelf{
         Book* books;
         int size;
     public:
+        //constructor that creates bookshelf with 3 books in it
         BookShelf(){
             size = 3;
             books = new Book[size]{
@@ -33,12 +35,14 @@ class BookShelf{
             };
             std::cout << "BookShelf contructor: Shelf initialized with " << size << " books" << std::endl;
         }
+        //destructor deletes array of books
         ~BookShelf(){
             delete[] books;
             std::cout << "BookShelf constructor: Shelf destroyed. " << std::endl;
         }
+        //displaying all books in the shelf
         void displayBooks() const{
-            std::cout << "Books on sheld: " << std::endl;
+            std::cout << "Books on shelf: " << std::endl;
             for(int i = 0; i < size; ++i){
                 books[i].display();
             }
@@ -48,6 +52,7 @@ class BookShelf{
 
 
 int main() {
+    //creating bookshelf called shelf
     BookShelf* shelf = new BookShelf();
     shelf->displayBooks();
 

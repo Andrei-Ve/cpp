@@ -7,71 +7,83 @@ class Car{
         int year;
         float price;
     public:
+    //constructor
         Car(std::string m, int y, float p) : model(m), year(y), price(p) {}
-
+        //destructor
         ~Car(){
-            std::cout << "Destroyed " << model;
+            std::cout << "Destroyed " << model << "\n";
         }
 
+        //creating virtual so we could use functions in derived classes, didnt work without this
         virtual void input(){}
         virtual void display() const{}
 
+        //taking basic inputs
         void inputBasic(std::string m, int y, float p){ 
             model = m;
             year = y;
             price = p;
         }
 
+        //displaying 
         void displayBasic() const{
             std::cout << "Model: " << model << ", Year: " << year << ", Price: " << price;
         }
 };
 
+
+//derived class electricCar
 class ElectricCar : public Car{
     private:
         float batterySize;
     public:
+        //constructor refers to Car class
         ElectricCar(std::string m, int y, float p) : Car(m, y, p){}
+        //asks for extra params
         void input(){
             std::cout << "Enter battery size (kWh): ";
             std::cin >> batterySize;
         }
-
+        //displays special params
         void display() const{
             std::cout << ", Batterysize: " << batterySize << std::endl;
         }
 
 };
-
+//derived class GasCar
 class GasCar : public Car{
     private:
         float fuelCapacity;
     public:
+        //constructor refers to Car class
         GasCar(std::string m, int y, float p) : Car(m, y, p){}
+        //asks for extra params
         void input(){
             std::cout << "Enter fuelc capacity (L): ";
             std::cin >> fuelCapacity;
         }
-
+        //displays special params
         void display() const{
             std::cout << ", Fuelcapacity: " << fuelCapacity << std::endl;
         }
 
 };
-
+//derived class HybridCar
 class HybridCar : public Car{
     private:
         float batterySize;
         float fuelCapacity;
     public:
+        //constructor refers to Car class
         HybridCar(std::string m, int y, float p) : Car(m, y, p){}
+        //asks for extra params
         void input(){
             std::cout << "Enter battery size (kWh): ";
             std::cin >> batterySize;
             std::cout << "Enter fuelc capacity (L): ";
             std::cin >> fuelCapacity;
         }
-
+        //displays special params
         void display() const{
             std::cout << ", Batterysize: " << batterySize << ", Fuelcapacity: " << fuelCapacity << std::endl;
         }
@@ -99,6 +111,8 @@ int main(){
         // std::cout << "    car type is   " << *FleetType[i];
         std::cin.ignore();
 
+
+        //ask basic info
         std::cout << "Enter model: ";
         std::getline(std::cin, model);
         std::cout << "Enter year: ";
@@ -108,6 +122,7 @@ int main(){
 
         CarFleet[i] = new Car(model, year, price);
 
+        //change Car class to whatever
         switch (CarType[i]) {
             case 1:
                 CarFleet[i] = new ElectricCar(model, year, price);
@@ -121,20 +136,22 @@ int main(){
             default:
                 break;
         }
-
+        //call input depending on the type of car
         CarFleet[i]->input();
     }
+
+    //display whole fleet
     std::cout << "\n~~~~Fleet Info~~~~\n";
     for(int i = 0; i < numberOfCars; ++i){
         CarFleet[i]->displayBasic();
         CarFleet[i]->display();
     }
-
+    //clear fleet
     std::cout << "\n~~~~Clearing fleet~~~~\n";
     for (int i = 0; i < numberOfCars; ++i){
         delete CarFleet[i];
     }
-
+    //delete fleet array and car type array
     delete[] CarFleet;
     delete[] CarType;
 
