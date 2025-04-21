@@ -2,12 +2,20 @@
 #include <stdint.h>
 #include <string>
 
+
+//vehicle class
 class Vehicle{
     protected:
         std::string brand;
-        uint16_t year;
+        int year;
     public:
-        Vehicle(std::string b, uint16_t y) {
+        //default const
+        Vehicle(){
+            brand = "Unknown";
+            year = 0;
+        }
+        //constructor
+        Vehicle(std::string b, int y) {
             brand = b;
             year = y;
         }
@@ -19,16 +27,20 @@ class Vehicle{
             std::cout << "Starting engine of Vehicle" << std::endl;
         }
 };
-
-class Car : Vehicle{
-    private:
-        uint8_t numDoors;
+//car class
+class Car : public Vehicle{
+    protected:
+        int numDoors;
     public:
-        Car(std::string b, uint16_t y, uint8_t n){
-            // brand = b;
-            // year = y;
+        //default const
+        Car(){
+            brand = "Unknown";
+            year = 0;
+            numDoors = 0;
+        }
+        //constructor
+        Car(std::string b, int y, int n) : Vehicle(b, y){
             numDoors = n;
-            Vehicle Vehicle(b, y);
         }
         void showInfo() {
             std::cout << "Brand: " << brand << std::endl;
@@ -39,18 +51,25 @@ class Car : Vehicle{
             std::cout << "Car engine is starting!" << std::endl;
         }
 };
-
+//electiccar class
 class ElectricCar : public Car{
     private:
-        short int batteryCapacity;
+        int batteryCapacity = 0;
     public:
-        ElectricCar(std::string b, uint16_t y, uint8_t n, short int c){
-            // Car.brand = b;
-            // year = y;
-            // numDoors = n;
+    //default const
+        ElectricCar(){
+            brand = "Unknown";
+            year = 0;
+            numDoors = 0;
             batteryCapacity = 0;
         }
+        //constructor
+        ElectricCar(std::string b, int y, int n, int c) : Car(b, y, n){
+            
+            batteryCapacity = c;
+        }
         void showInfo() {
+            
             std::cout << "Brand: " << brand << std::endl;
             std::cout << "Year: " << year << std::endl;
             std::cout << "Number of doors: " << numDoors << std::endl;
@@ -68,7 +87,7 @@ int main(){
     Car* c1 = new Car("Toyota", 1999, 4);
     c1->showInfo();
     c1->startEngine();
-    Vehicle* ec1 = new Vehicle("Toyota", 1999, 2, 50000);
+    ElectricCar* ec1 = new ElectricCar("Toyota", 1999, 2, 5000);
     ec1->showInfo();
     ec1->startEngine();
     return 0;

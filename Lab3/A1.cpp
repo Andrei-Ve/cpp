@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+
+//creating Book class
 class Book {
     private:
         std::string title;
@@ -22,7 +24,7 @@ int main() {
     // book1.title = "aa";
     // std::cout << book1.title;
 
-    book1.publisher = "Metropolia";
+    book1.publisher = "Metropolia"; //book1 published by Metropolia
     std::cout << "Publisher is " << book1.publisher << std::endl;;
     
     book1.displayAuthorInfo();
